@@ -3,5 +3,5 @@ export type Streamer = {
   login: string;
   name: string;
   followedAt: Date;
-  profileImageUrl: string;
+  profileImageUrl?: string;
 };

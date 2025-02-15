@@ -63,7 +63,7 @@ function Thumbnail(props: { imageUrl: string; viewerCount: number; startedAt: Da
   );
 }
 
-function ProfileImage(props: { imageUrl: string }) {
+function ProfileImage(props: { imageUrl?: string }) {
   return (
     <div className="w-10 min-w-10">
       <img src={props.imageUrl} alt={props.imageUrl} className="rounded-full" />

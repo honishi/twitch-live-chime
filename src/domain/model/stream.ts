@@ -12,5 +12,5 @@ export type Stream = {
   tagIds: string[];
   tags: string[];
   language: string;
-  profileImageUrl: string;
+  profileImageUrl?: string;
 };

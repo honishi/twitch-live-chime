@@ -98,7 +98,7 @@ export class TwitchApiImpl implements TwitchApi {
       name: streamer.broadcaster_name,
       followedAt: new Date(streamer.followed_at),
       profileImageUrl:
-        allUsers.find((user) => user.id === streamer.broadcaster_id)?.profileImageUrl ?? "",
+        allUsers.find((user) => user.id === streamer.broadcaster_id)?.profileImageUrl || undefined,
     }));
   }
 
@@ -130,7 +130,8 @@ export class TwitchApiImpl implements TwitchApi {
       tagIds: stream.tag_ids,
       tags: stream.tags,
       language: stream.language,
-      profileImageUrl: users.find((user) => user.id === stream.user_id)?.profileImageUrl ?? "",
+      profileImageUrl:
+        users.find((user) => user.id === stream.user_id)?.profileImageUrl || undefined,
     };
   }
 }

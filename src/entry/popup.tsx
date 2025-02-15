@@ -97,6 +97,30 @@ async function renderTrendingStreams() {
     return;
   }
 
+  const popup = container.resolve<Popup>(InjectTokens.Popup);
+  const selectedLanguages = await popup.getTrendingLanguages();
+
+  roots.trendingSelect = createRoot(selectContainer);
+  roots.trendingSelect.render(
+    <Select
+      isMulti
+      placeholder="Select Languages..."
+      options={streamLanguages}
+      defaultValue={streamLanguages.filter((language) =>
+        selectedLanguages.includes(language.value),
+      )}
+      onChange={(selected) => {
+        const values = selected.map((v: unknown) => (v as { value: string }).value);
+        popup.setTrendingLanguages(values);
+        updateTrendingStreams();
+      }}
+      className="mb-4 w-100"
+      styles={makeReactSelectStylesConfig()}
+    />,
+  );
+}
+
+function makeReactSelectStylesConfig(): StylesConfig {
   const isDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 
   const black = "#101010";
@@ -104,7 +128,7 @@ async function renderTrendingStreams() {
   const lightActive = "#5c16c5";
   const darkActive = "#bf94ff";
 
-  const customStyles: StylesConfig = {
+  return {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     control: (base, state) => ({
       ...base,
@@ -192,28 +216,6 @@ async function renderTrendingStreams() {
       };
     },
   };
-
-  const popup = container.resolve<Popup>(InjectTokens.Popup);
-  const selectedLanguages = await popup.getTrendingLanguages();
-
-  roots.trendingSelect = createRoot(selectContainer);
-  roots.trendingSelect.render(
-    <Select
-      isMulti
-      placeholder="Select Languages..."
-      options={streamLanguages}
-      defaultValue={streamLanguages.filter((language) =>
-        selectedLanguages.includes(language.value),
-      )}
-      onChange={(selected) => {
-        const values = selected.map((v: unknown) => (v as { value: string }).value);
-        popup.setTrendingLanguages(values);
-        updateTrendingStreams();
-      }}
-      className="mb-4 w-100"
-      styles={customStyles}
-    />,
-  );
 }
 
 async function updateFollowingStreams() {

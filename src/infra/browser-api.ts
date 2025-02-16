@@ -9,6 +9,7 @@ const TWITCH_USER_ID_KEY = "twitchUserId";
 const SHOW_NOTIFICATION_KEY = "showNotification";
 const SOUND_VOLUME_KEY = "soundVolume";
 const SUSPEND_FROM_DATE_KEY = "suspendFromDate";
+const DUPLICATE_TAB_GUARD_KEY = "duplicateTabGuard";
 const AUTO_OPEN_USERS_KEY = "autoOpenUsers";
 const TRENDING_LANGUAGES_KEY = "trendingLanguages";
 
@@ -217,6 +218,15 @@ export class BrowserApiImpl implements BrowserApi {
       return undefined;
     }
     return new Date(date);
+  }
+
+  async isDuplicateTabGuard(): Promise<boolean> {
+    const result = await chrome.storage.local.get([DUPLICATE_TAB_GUARD_KEY]);
+    return result[DUPLICATE_TAB_GUARD_KEY] ?? true;
+  }
+
+  async setDuplicateTabGuard(duplicateTabGuard: boolean): Promise<void> {
+    await chrome.storage.local.set({ [DUPLICATE_TAB_GUARD_KEY]: duplicateTabGuard });
   }
 
   openOptionsPage(): void {

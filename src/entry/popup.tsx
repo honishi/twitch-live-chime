@@ -17,6 +17,7 @@ import Stream from "./component/Stream";
 import Streamer from "./component/Streamer";
 
 const SUSPEND_BUTTON_ID = "suspend-button";
+const DUPLICATE_TAB_GUARD_BUTTON_ID = "duplicate-tab-guard-button";
 
 const roots: { [key: string]: Root } = {};
 
@@ -40,6 +41,14 @@ async function renderMenu() {
     await updateSuspendButton();
   };
   await updateSuspendButton();
+
+  // Duplicate tab guard button
+  const duplicateTabGuardButton = document.getElementById(DUPLICATE_TAB_GUARD_BUTTON_ID) as HTMLButtonElement;
+  duplicateTabGuardButton.onclick = async () => {
+    await toggleDuplicateTabGuard();
+    await updateDuplicateTabGuardButton();
+  };
+  await updateDuplicateTabGuardButton();
 
   // Reconnect button
   const reconnectButton = document.getElementById("reconnect-button") as HTMLButtonElement;
@@ -357,6 +366,21 @@ async function updateSuspendButton() {
   const suspendButton = document.getElementById(SUSPEND_BUTTON_ID) as HTMLButtonElement;
   suspendIcon.textContent = isSuspended ? "sensors_off" : "sensors";
   suspendButton.textContent = `Auto Launch: ${isSuspended ? "Off" : "On"}`;
+}
+
+async function toggleDuplicateTabGuard() {
+  const popup = container.resolve<Popup>(InjectTokens.Popup);
+  const isDuplicateTabGuard = await popup.isDuplicateTabGuard();
+  await popup.setDuplicateTabGuard(!isDuplicateTabGuard);
+}
+
+async function updateDuplicateTabGuardButton() {
+  const popup = container.resolve<Popup>(InjectTokens.Popup);
+  const isDuplicateTabGuard = await popup.isDuplicateTabGuard();
+  const duplicateTabGuardIcon = document.getElementById("duplicate-tab-guard-icon") as HTMLSpanElement;
+  const duplicateTabGuardButton = document.getElementById(DUPLICATE_TAB_GUARD_BUTTON_ID) as HTMLButtonElement;
+  duplicateTabGuardIcon.textContent = isDuplicateTabGuard ? "verified_user" : "remove_moderator";
+  duplicateTabGuardButton.textContent = `Duplicate Tab Guard: ${isDuplicateTabGuard ? "On" : "Off"}`;
 }
 
 async function refreshCurrentTab() {

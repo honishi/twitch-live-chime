@@ -18,6 +18,8 @@ export interface Popup {
   setBadgeNumber(number: number): Promise<void>;
   isSuspended(): Promise<boolean>;
   setSuspended(suspended: boolean): Promise<void>;
+  isDuplicateTabGuard(): Promise<boolean>;
+  setDuplicateTabGuard(duplicateTabGuard: boolean): Promise<void>;
   openOptionsPage(): void;
   isAutoOpenUser(userId: string): Promise<boolean>;
   setAutoOpenUser(userId: string, enabled: boolean): Promise<void>;
@@ -95,6 +97,14 @@ export class PopupImpl implements Popup {
     await this.browserApi.setBadgeBackgroundColor(
       isSuspended ? suspendedBadgeBackgroundColor : defaultBadgeBackgroundColor,
     );
+  }
+
+  async isDuplicateTabGuard(): Promise<boolean> {
+    return await this.browserApi.isDuplicateTabGuard();
+  }
+
+  async setDuplicateTabGuard(duplicateTabGuard: boolean): Promise<void> {
+    await this.browserApi.setDuplicateTabGuard(duplicateTabGuard);
   }
 
   openOptionsPage(): void {

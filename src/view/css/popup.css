@@ -31,8 +31,7 @@ body {
 
 .menu-item {
   cursor: pointer;
-  font-weight: 900;
-  font-size: 14px;
+  font-size: 12px;
   margin-right: 16px;
   display: flex;
   align-items: center;
@@ -62,7 +61,8 @@ body {
   }
 }
 
-.material-icons {
+.material-icons,
+.material-icons-outlined {
   font-size: 18px !important;
   margin-right: 4px;
 }

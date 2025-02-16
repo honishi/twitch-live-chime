@@ -29,6 +29,8 @@ export interface BrowserApi {
   getTabUrls(): Promise<string[]>;
   setSuspendFromDate(date: Date | undefined): Promise<void>;
   getSuspendFromDate(): Promise<Date | undefined>;
+  isDuplicateTabGuard(): Promise<boolean>;
+  setDuplicateTabGuard(duplicateTabGuard: boolean): Promise<void>;
   openOptionsPage(): void;
   getTrendingLanguages(): Promise<string[]>;
   setTrendingLanguages(languages: string[]): Promise<void>;

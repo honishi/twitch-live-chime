@@ -44,6 +44,8 @@ describe("BackgroundImpl", () => {
       getTabUrls: jest.fn(),
       setSuspendFromDate: jest.fn(),
       getSuspendFromDate: jest.fn(),
+      isDuplicateTabGuard: jest.fn(),
+      setDuplicateTabGuard: jest.fn(),
       openOptionsPage: jest.fn(),
     } as unknown as jest.Mocked<BrowserApi>;
 
@@ -154,6 +156,7 @@ describe("BackgroundImpl", () => {
       // State flags
       mockBrowserApi.getShowNotification.mockResolvedValue(true);
       mockBrowserApi.getSuspendFromDate.mockResolvedValue(undefined); // Not suspended
+      mockBrowserApi.isDuplicateTabGuard.mockResolvedValue(true); // Duplicate tab guard is on
       mockBrowserApi.isAutoOpenUser.mockResolvedValue(true); // The user is set to auto-open
       mockBrowserApi.getTabUrls.mockResolvedValue([]); // No tabs are open yet
 

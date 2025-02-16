@@ -203,10 +203,11 @@ export class BackgroundImpl implements Background {
 
   private async shouldAutoOpenStream(stream: Stream): Promise<boolean> {
     const isTargetUser = await this.browserApi.isAutoOpenUser(stream.userId);
+    const isDuplicateTabGuard = await this.browserApi.isDuplicateTabGuard();
     const isAlreadyOpened = (await this.getTabStreamUserLogins()).includes(stream.userLogin);
-    const shouldOpen = isTargetUser && !isAlreadyOpened;
+    const shouldOpen = isTargetUser && (!isDuplicateTabGuard || !isAlreadyOpened);
     console.log(
-      `shouldAutoOpen: userId:(${stream.userId}) userLogin:(${stream.userLogin}) streamId:(${stream.id}) isTargetUser:(${isTargetUser}) isAlreadyOpened:(${isAlreadyOpened}) shouldOpen:(${shouldOpen})`,
+      `shouldAutoOpen: userId:(${stream.userId}) userLogin:(${stream.userLogin}) streamId:(${stream.id}) isTargetUser:(${isTargetUser}) isDuplicateTabGuard:(${isDuplicateTabGuard}) isAlreadyOpened:(${isAlreadyOpened}) shouldOpen:(${shouldOpen})`,
     );
     return shouldOpen;
   }

@@ -6,7 +6,7 @@ Get notified when your favorite Twitch streamers go live with auto-launch capabi
 
 ## Installation
 
-* [Chrome Web Store]()
+* [Chrome Web Store](https://chromewebstore.google.com/detail/jadichgmonmhlagkpbpiednhokaeaaja)
 
 ## Build
 

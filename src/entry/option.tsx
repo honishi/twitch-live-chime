@@ -8,8 +8,28 @@ import { configureDefaultContainer } from "../di/register";
 import { Option } from "../domain/usecase/option";
 
 async function renderPage() {
+  await renderAutoUnmuteCheckbox();
   await renderShowNotificationCheckbox();
   await renderSoundVolume();
+}
+
+async function renderAutoUnmuteCheckbox() {
+  const autoUnmuteCheckbox = document.getElementById("auto-unmute-checkbox") as HTMLInputElement;
+  autoUnmuteCheckbox.checked = await getAutoUnmute();
+  autoUnmuteCheckbox.addEventListener("change", async () => {
+    const checked = autoUnmuteCheckbox.checked;
+    await setAutoUnmute(checked);
+  });
+}
+
+async function getAutoUnmute(): Promise<boolean> {
+  const option = container.resolve<Option>(InjectTokens.Option);
+  return await option.getAutoUnmute();
+}
+
+async function setAutoUnmute(value: boolean): Promise<void> {
+  const option = container.resolve<Option>(InjectTokens.Option);
+  await option.setAutoUnmute(value);
 }
 
 async function renderShowNotificationCheckbox() {

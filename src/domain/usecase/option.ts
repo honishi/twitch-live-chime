@@ -6,6 +6,8 @@ import { TwitchApi } from "../infra-interface/twitch-api";
 import { SoundType } from "../model/sound-type";
 
 export interface Option {
+  getAutoUnmute(): Promise<boolean>;
+  setAutoUnmute(value: boolean): Promise<void>;
   getShowNotification(): Promise<boolean>;
   setShowNotification(value: boolean): Promise<void>;
   getSoundVolume(): Promise<number>;
@@ -21,6 +23,14 @@ export class OptionImpl implements Option {
     @inject(InjectTokens.TwitchApi) private twitchApi: TwitchApi,
     @inject(InjectTokens.BrowserApi) private browserApi: BrowserApi,
   ) {}
+
+  async getAutoUnmute(): Promise<boolean> {
+    return await this.browserApi.getAutoUnmute();
+  }
+
+  async setAutoUnmute(value: boolean): Promise<void> {
+    await this.browserApi.setAutoUnmute(value);
+  }
 
   async getShowNotification(): Promise<boolean> {
     return await this.browserApi.getShowNotification();

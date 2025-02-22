@@ -18,7 +18,8 @@ body {
   align-items: center;
 }
 
-.section-title .material-icons {
+.section-title .material-icons,
+.section-title .material-icons-outlined {
   font-size: 16px;
   margin-right: 8px;
 }

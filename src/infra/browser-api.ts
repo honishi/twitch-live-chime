@@ -12,6 +12,7 @@ const SUSPEND_FROM_DATE_KEY = "suspendFromDate";
 const DUPLICATE_TAB_GUARD_KEY = "duplicateTabGuard";
 const AUTO_OPEN_USERS_KEY = "autoOpenUsers";
 const TRENDING_LANGUAGES_KEY = "trendingLanguages";
+const AUTO_UNMUTE_KEY = "autoUnmute";
 
 const OFFSCREEN_HTML = "html/offscreen.html";
 
@@ -240,5 +241,14 @@ export class BrowserApiImpl implements BrowserApi {
 
   async setTrendingLanguages(languages: string[]): Promise<void> {
     await chrome.storage.local.set({ [TRENDING_LANGUAGES_KEY]: languages });
+  }
+
+  async getAutoUnmute(): Promise<boolean> {
+    const result = await chrome.storage.local.get([AUTO_UNMUTE_KEY]);
+    return result[AUTO_UNMUTE_KEY] ?? false;
+  }
+
+  async setAutoUnmute(enabled: boolean): Promise<void> {
+    await chrome.storage.local.set({ [AUTO_UNMUTE_KEY]: enabled });
   }
 }

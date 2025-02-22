@@ -34,4 +34,6 @@ export interface BrowserApi {
   openOptionsPage(): void;
   getTrendingLanguages(): Promise<string[]>;
   setTrendingLanguages(languages: string[]): Promise<void>;
+  getAutoUnmute(): Promise<boolean>;
+  setAutoUnmute(enabled: boolean): Promise<void>;
 }

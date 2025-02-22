@@ -43,7 +43,9 @@ async function renderMenu() {
   await updateSuspendButton();
 
   // Duplicate tab guard button
-  const duplicateTabGuardButton = document.getElementById(DUPLICATE_TAB_GUARD_BUTTON_ID) as HTMLButtonElement;
+  const duplicateTabGuardButton = document.getElementById(
+    DUPLICATE_TAB_GUARD_BUTTON_ID,
+  ) as HTMLButtonElement;
   duplicateTabGuardButton.onclick = async () => {
     await toggleDuplicateTabGuard();
     await updateDuplicateTabGuardButton();
@@ -377,8 +379,12 @@ async function toggleDuplicateTabGuard() {
 async function updateDuplicateTabGuardButton() {
   const popup = container.resolve<Popup>(InjectTokens.Popup);
   const isDuplicateTabGuard = await popup.isDuplicateTabGuard();
-  const duplicateTabGuardIcon = document.getElementById("duplicate-tab-guard-icon") as HTMLSpanElement;
-  const duplicateTabGuardButton = document.getElementById(DUPLICATE_TAB_GUARD_BUTTON_ID) as HTMLButtonElement;
+  const duplicateTabGuardIcon = document.getElementById(
+    "duplicate-tab-guard-icon",
+  ) as HTMLSpanElement;
+  const duplicateTabGuardButton = document.getElementById(
+    DUPLICATE_TAB_GUARD_BUTTON_ID,
+  ) as HTMLButtonElement;
   duplicateTabGuardIcon.textContent = isDuplicateTabGuard ? "verified_user" : "remove_moderator";
   duplicateTabGuardButton.textContent = `Duplicate Tab Guard: ${isDuplicateTabGuard ? "On" : "Off"}`;
 }

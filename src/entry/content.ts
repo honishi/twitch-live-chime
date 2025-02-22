@@ -1,12 +1,26 @@
+import "reflect-metadata";
+
+import { container } from "tsyringe";
+
+import { InjectTokens } from "../di/inject-tokens";
+import { configureDefaultContainer } from "../di/register";
+import { Content } from "../domain/usecase/content";
+
 async function listenLoadEvent() {
   unmutePlayerIfMuted();
 }
 
 async function unmutePlayerIfMuted() {
-  console.log("unmutePlayerIfMuted");
   if (!isPlayerPage()) {
     return;
   }
+
+  const content = container.resolve<Content>(InjectTokens.Content);
+  const isAutoUnmute = await content.isAutoUnmute();
+  if (!isAutoUnmute) {
+    return;
+  }
+
   await sleep(2000);
   const muteUnmuteButton = document.querySelector(
     'button[data-a-target="player-mute-unmute-button"]',
@@ -17,14 +31,16 @@ async function unmutePlayerIfMuted() {
   if (!muteUnmuteButton || !volumeSlider) {
     return;
   }
+
   const isMuted = volumeSlider.value === "0";
   if (!isMuted) {
     return;
   }
+
   muteUnmuteButton.click();
   for (let i = 0; i < 10; i++) {
-    simulateShiftArrowUp();
     await sleep(100);
+    simulateShiftArrowUp();
   }
 }
 
@@ -63,4 +79,5 @@ function simulateShiftArrowUp() {
   document.dispatchEvent(keyUpEvent);
 }
 
+configureDefaultContainer();
 window.addEventListener("load", listenLoadEvent);

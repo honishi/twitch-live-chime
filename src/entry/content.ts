@@ -33,11 +33,10 @@ async function unmutePlayerIfMuted() {
   }
 
   const isMuted = volumeSlider.value === "0";
-  if (!isMuted) {
-    return;
+  if (isMuted) {
+    muteUnmuteButton.click();
   }
 
-  muteUnmuteButton.click();
   for (let i = 0; i < 10; i++) {
     await sleep(100);
     simulateShiftArrowUp();

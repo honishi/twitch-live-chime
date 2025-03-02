@@ -1,6 +1,6 @@
 {
   "name": "Twitch Live Chime",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "manifest_version": 3,
   "description": "Get notified when your favorite Twitch streamers go live with auto-launch capability.",
   "icons": {

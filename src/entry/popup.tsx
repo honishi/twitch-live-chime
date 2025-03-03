@@ -40,6 +40,8 @@ async function renderMenu() {
     await toggleSuspended();
     await updateSuspendButton();
   };
+  const autoLaunchButtonTooltip = chrome.i18n.getMessage("autoLaunchButtonTooltip");
+  suspendButton.title = autoLaunchButtonTooltip;
   await updateSuspendButton();
 
   // Duplicate tab guard button
@@ -50,6 +52,8 @@ async function renderMenu() {
     await toggleDuplicateTabGuard();
     await updateDuplicateTabGuardButton();
   };
+  const duplicateTabGuardButtonTooltip = chrome.i18n.getMessage("duplicateTabGuardButtonTooltip");
+  duplicateTabGuardButton.title = duplicateTabGuardButtonTooltip;
   await updateDuplicateTabGuardButton();
 
   // Reconnect button
@@ -57,21 +61,45 @@ async function renderMenu() {
   reconnectButton.onclick = async () => {
     await popup.connectToTwitch();
   };
+  const reconnectText = chrome.i18n.getMessage("reconnect");
+  reconnectButton.textContent = reconnectText;
+  const reconnectButtonTooltip = chrome.i18n.getMessage("reconnectButtonTooltip");
+  reconnectButton.title = reconnectButtonTooltip;
 
   // Refresh button
   const refreshButton = document.getElementById("refresh-button") as HTMLButtonElement;
   refreshButton.onclick = async () => {
     await refreshCurrentTab();
   };
+  const refreshText = chrome.i18n.getMessage("refresh");
+  refreshButton.textContent = refreshText;
+  const refreshButtonTooltip = chrome.i18n.getMessage("refreshButtonTooltip");
+  refreshButton.title = refreshButtonTooltip;
 
   // Option button
   const optionButton = document.getElementById("option-button") as HTMLButtonElement;
   optionButton.onclick = () => {
     popup.openOptionsPage();
   };
+  const optionText = chrome.i18n.getMessage("options");
+  optionButton.textContent = optionText;
+  const optionButtonTooltip = chrome.i18n.getMessage("optionsButtonTooltip");
+  optionButton.title = optionButtonTooltip;
 }
 
 async function renderTabs() {
+  const followingButton = document.getElementById("following-button") as HTMLButtonElement;
+  const followingText = chrome.i18n.getMessage("following");
+  followingButton.textContent = followingText;
+
+  const trendingButton = document.getElementById("trending-button") as HTMLButtonElement;
+  const trendingText = chrome.i18n.getMessage("trending");
+  trendingButton.textContent = trendingText;
+
+  const autoLaunchButton = document.getElementById("auto-launch-button") as HTMLButtonElement;
+  const autoLaunchText = chrome.i18n.getMessage("autoLaunch");
+  autoLaunchButton.textContent = autoLaunchText;
+
   const tabButtons = document.querySelectorAll(".tab-button");
   const tabContents = document.querySelectorAll(".tab-content");
 
@@ -115,7 +143,7 @@ async function renderTrendingStreams() {
   roots.trendingSelect.render(
     <Select
       isMulti
-      placeholder="Select Languages..."
+      placeholder={chrome.i18n.getMessage("selectLanguages")}
       options={streamLanguages}
       defaultValue={streamLanguages.filter((language) =>
         selectedLanguages.includes(language.value),
@@ -277,7 +305,7 @@ function ConnectButton() {
 function NoStreamsLabel() {
   return (
     <div className="m-4 flex w-full items-center gap-2 py-10 text-sm">
-      No live streams.
+      {chrome.i18n.getMessage("noLiveStreams")}
       <img src={randomNoStreamImage()} width="24" alt="No live streams" />
     </div>
   );
@@ -367,7 +395,8 @@ async function updateSuspendButton() {
   const suspendIcon = document.getElementById("suspend-icon") as HTMLSpanElement;
   const suspendButton = document.getElementById(SUSPEND_BUTTON_ID) as HTMLButtonElement;
   suspendIcon.textContent = isSuspended ? "sensors_off" : "sensors";
-  suspendButton.textContent = `Auto Launch: ${isSuspended ? "Off" : "On"}`;
+  const autoLaunchText = chrome.i18n.getMessage("autoLaunch");
+  suspendButton.textContent = `${autoLaunchText}: ${isSuspended ? "Off" : "On"}`;
 }
 
 async function toggleDuplicateTabGuard() {
@@ -386,7 +415,8 @@ async function updateDuplicateTabGuardButton() {
     DUPLICATE_TAB_GUARD_BUTTON_ID,
   ) as HTMLButtonElement;
   duplicateTabGuardIcon.textContent = isDuplicateTabGuard ? "verified_user" : "remove_moderator";
-  duplicateTabGuardButton.textContent = `Duplicate Tab Guard: ${isDuplicateTabGuard ? "On" : "Off"}`;
+  const duplicateTabGuardText = chrome.i18n.getMessage("duplicateTabGuard");
+  duplicateTabGuardButton.textContent = `${duplicateTabGuardText}: ${isDuplicateTabGuard ? "On" : "Off"}`;
 }
 
 async function refreshCurrentTab() {

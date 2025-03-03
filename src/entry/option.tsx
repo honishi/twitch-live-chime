@@ -8,9 +8,19 @@ import { configureDefaultContainer } from "../di/register";
 import { Option } from "../domain/usecase/option";
 
 async function renderPage() {
+  await renderAutoLaunchSettingsTitle();
   await renderAutoUnmuteCheckbox();
+  await renderNotificationSettingsTitle();
   await renderShowNotificationCheckbox();
   await renderSoundVolume();
+}
+
+async function renderAutoLaunchSettingsTitle() {
+  const autoLaunchSettingsSpan = document.getElementById(
+    "auto-launch-settings-span",
+  ) as HTMLSpanElement;
+  const autoLaunchSettingsText = chrome.i18n.getMessage("autoLaunchSettings");
+  autoLaunchSettingsSpan.textContent = autoLaunchSettingsText;
 }
 
 async function renderAutoUnmuteCheckbox() {
@@ -20,6 +30,9 @@ async function renderAutoUnmuteCheckbox() {
     const checked = autoUnmuteCheckbox.checked;
     await setAutoUnmute(checked);
   });
+  const autoUnmuteLabel = document.getElementById("auto-unmute-label") as HTMLLabelElement;
+  const autoUnmuteCheckboxText = chrome.i18n.getMessage("autoUnmuteCheckbox");
+  autoUnmuteLabel.textContent = autoUnmuteCheckboxText;
 }
 
 async function getAutoUnmute(): Promise<boolean> {
@@ -32,6 +45,14 @@ async function setAutoUnmute(value: boolean): Promise<void> {
   await option.setAutoUnmute(value);
 }
 
+async function renderNotificationSettingsTitle() {
+  const notificationSettingsSpan = document.getElementById(
+    "notification-settings-span",
+  ) as HTMLSpanElement;
+  const notificationSettingsText = chrome.i18n.getMessage("notificationSettings");
+  notificationSettingsSpan.textContent = notificationSettingsText;
+}
+
 async function renderShowNotificationCheckbox() {
   const showNotificationCheckbox = document.getElementById(
     "show-notification-checkbox",
@@ -41,6 +62,11 @@ async function renderShowNotificationCheckbox() {
     const checked = showNotificationCheckbox.checked;
     await setShowNotification(checked);
   });
+  const showNotificationLabel = document.getElementById(
+    "show-notification-label",
+  ) as HTMLLabelElement;
+  const showNotificationCheckboxText = chrome.i18n.getMessage("showNotificationCheckbox");
+  showNotificationLabel.textContent = showNotificationCheckboxText;
 }
 
 async function getShowNotification(): Promise<boolean> {
@@ -65,12 +91,18 @@ async function renderSoundVolume() {
   });
   volumeSlider.addEventListener("change", playTestSound);
 
+  const volumeLabel = document.getElementById("volume-label") as HTMLSpanElement;
+  const soundVolumeText = chrome.i18n.getMessage("notificationSoundVolume");
+  volumeLabel.textContent = soundVolumeText;
+
   await updateVolumeValueText();
 
   const playTestSoundButton = document.getElementById(
     "play-test-sound-button",
   ) as HTMLButtonElement;
   playTestSoundButton.addEventListener("click", playTestSound);
+  const testSoundVolumeText = chrome.i18n.getMessage("testSoundVolume");
+  playTestSoundButton.textContent = testSoundVolumeText;
 }
 
 async function updateVolumeValueText() {

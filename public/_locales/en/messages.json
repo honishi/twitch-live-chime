@@ -16,5 +16,11 @@
   },
   "options": {
     "message": "Options"
+  },
+  "following": {
+    "message": "Following"
+  },
+  "trending": {
+    "message": "Trending"
   }
 }

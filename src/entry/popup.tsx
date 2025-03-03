@@ -78,6 +78,18 @@ async function renderMenu() {
 }
 
 async function renderTabs() {
+  const followingButton = document.getElementById("following-button") as HTMLButtonElement;
+  const followingText = chrome.i18n.getMessage("following");
+  followingButton.textContent = followingText;
+
+  const trendingButton = document.getElementById("trending-button") as HTMLButtonElement;
+  const trendingText = chrome.i18n.getMessage("trending");
+  trendingButton.textContent = trendingText;
+
+  const autoLaunchButton = document.getElementById("auto-launch-button") as HTMLButtonElement;
+  const autoLaunchText = chrome.i18n.getMessage("autoLaunch");
+  autoLaunchButton.textContent = autoLaunchText;
+
   const tabButtons = document.querySelectorAll(".tab-button");
   const tabContents = document.querySelectorAll(".tab-content");
 

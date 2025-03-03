@@ -16,5 +16,11 @@
   },
   "options": {
     "message": "オプション"
+  },
+  "following": {
+    "message": "フォロー中"
+  },
+  "trending": {
+    "message": "トレンド"
   }
 }

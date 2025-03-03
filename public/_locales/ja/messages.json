@@ -1,6 +1,6 @@
 {
   "appDescription": {
-    "message": "お気に入りのTwitchストリーマーが配信開始したときに通知を受け取り、自動入場も利用できます。"
+    "message": "指定した Twitch ストリーマーが配信開始したときの自動入場が可能になります。"
   },
   "autoLaunch": {
     "message": "自動入場"

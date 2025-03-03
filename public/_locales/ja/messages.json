@@ -38,6 +38,9 @@
   "trending": {
     "message": "トレンド"
   },
+  "selectLanguages": {
+    "message": "言語を選択..."
+  },
   "autoLaunchSettings": {
     "message": "自動入場設定"
   },

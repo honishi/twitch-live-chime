@@ -143,7 +143,7 @@ async function renderTrendingStreams() {
   roots.trendingSelect.render(
     <Select
       isMulti
-      placeholder="Select Languages..."
+      placeholder={chrome.i18n.getMessage("selectLanguages")}
       options={streamLanguages}
       defaultValue={streamLanguages.filter((language) =>
         selectedLanguages.includes(language.value),

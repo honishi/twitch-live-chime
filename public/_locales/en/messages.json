@@ -38,6 +38,9 @@
   "trending": {
     "message": "Trending"
   },
+  "selectLanguages": {
+    "message": "Select Languages..."
+  },
   "autoLaunchSettings": {
     "message": "Auto-Launch Settings"
   },

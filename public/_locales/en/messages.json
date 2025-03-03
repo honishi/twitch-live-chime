@@ -1,5 +1,20 @@
 {
   "appDescription": {
     "message": "Get notified when your favorite Twitch streamers go live with auto-launch capability."
+  },
+  "autoLaunch": {
+    "message": "Auto Launch"
+  },
+  "duplicateTabGuard": {
+    "message": "Duplicate Tab Guard"
+  },
+  "reconnect": {
+    "message": "Reconnect"
+  },
+  "refresh": {
+    "message": "Refresh"
+  },
+  "options": {
+    "message": "Options"
   }
 }

@@ -1,5 +1,20 @@
 {
   "appDescription": {
     "message": "お気に入りのTwitchストリーマーが配信開始したときに通知を受け取り、自動入場も利用できます。"
+  },
+  "autoLaunch": {
+    "message": "自動入場"
+  },
+  "duplicateTabGuard": {
+    "message": "重複タブブロック"
+  },
+  "reconnect": {
+    "message": "再接続"
+  },
+  "refresh": {
+    "message": "更新"
+  },
+  "options": {
+    "message": "オプション"
   }
 }

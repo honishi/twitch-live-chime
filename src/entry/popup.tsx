@@ -57,18 +57,24 @@ async function renderMenu() {
   reconnectButton.onclick = async () => {
     await popup.connectToTwitch();
   };
+  const reconnectText = chrome.i18n.getMessage("reconnect");
+  reconnectButton.textContent = reconnectText;
 
   // Refresh button
   const refreshButton = document.getElementById("refresh-button") as HTMLButtonElement;
   refreshButton.onclick = async () => {
     await refreshCurrentTab();
   };
+  const refreshText = chrome.i18n.getMessage("refresh");
+  refreshButton.textContent = refreshText;
 
   // Option button
   const optionButton = document.getElementById("option-button") as HTMLButtonElement;
   optionButton.onclick = () => {
     popup.openOptionsPage();
   };
+  const optionText = chrome.i18n.getMessage("options");
+  optionButton.textContent = optionText;
 }
 
 async function renderTabs() {
@@ -367,7 +373,8 @@ async function updateSuspendButton() {
   const suspendIcon = document.getElementById("suspend-icon") as HTMLSpanElement;
   const suspendButton = document.getElementById(SUSPEND_BUTTON_ID) as HTMLButtonElement;
   suspendIcon.textContent = isSuspended ? "sensors_off" : "sensors";
-  suspendButton.textContent = `Auto Launch: ${isSuspended ? "Off" : "On"}`;
+  const autoLaunchText = chrome.i18n.getMessage("autoLaunch");
+  suspendButton.textContent = `${autoLaunchText}: ${isSuspended ? "Off" : "On"}`;
 }
 
 async function toggleDuplicateTabGuard() {
@@ -386,7 +393,8 @@ async function updateDuplicateTabGuardButton() {
     DUPLICATE_TAB_GUARD_BUTTON_ID,
   ) as HTMLButtonElement;
   duplicateTabGuardIcon.textContent = isDuplicateTabGuard ? "verified_user" : "remove_moderator";
-  duplicateTabGuardButton.textContent = `Duplicate Tab Guard: ${isDuplicateTabGuard ? "On" : "Off"}`;
+  const duplicateTabGuardText = chrome.i18n.getMessage("duplicateTabGuard");
+  duplicateTabGuardButton.textContent = `${duplicateTabGuardText}: ${isDuplicateTabGuard ? "On" : "Off"}`;
 }
 
 async function refreshCurrentTab() {

@@ -22,5 +22,23 @@
   },
   "trending": {
     "message": "トレンド"
+  },
+  "autoLaunchSettings": {
+    "message": "自動入場設定"
+  },
+  "autoUnmuteCheckbox": {
+    "message": "自動入場後にミュートを自動解除する"
+  },
+  "notificationSettings": {
+    "message": "通知設定"
+  },
+  "showNotificationCheckbox": {
+    "message": "通知を表示する"
+  },
+  "notificationSoundVolume": {
+    "message": "通知音量"
+  },
+  "testSoundVolume": {
+    "message": "[テスト]"
   }
 }

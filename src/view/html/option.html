@@ -14,27 +14,27 @@
     <div class="section-container">
         <div class="section-title">
             <span class="material-icons-outlined">play_circle</span>
-            Auto-Launch Settings
+            <span id="auto-launch-settings-span"></span>
         </div>
         <div class="section-content checkbox-container">
             <input id="auto-unmute-checkbox" type="checkbox" />
-            <label for="auto-unmute-checkbox">Automatically unmute player after auto-launch</label>
+            <label id="auto-unmute-label" for="auto-unmute-checkbox"></label>
         </div>
     </div>
     <div class="section-container">
         <div class="section-title">
             <span class="material-icons-outlined">notifications</span>
-            Notification Settings
+            <span id="notification-settings-span"></span>
         </div>
         <div class="section-content checkbox-container">
             <input id="show-notification-checkbox" type="checkbox" />
-            <label for="show-notification-checkbox">Show notifications</label>
+            <label id="show-notification-label" for="show-notification-checkbox"></label>
         </div>
         <div class="section-content volume-slider-container">
-            <span class="volume-slider-label">Notification volume</span>
+            <span id="volume-label" class="volume-slider-label"></span>
             <input id="volume-slider" class="volume-slider" type="range" min="0" max="100" step="5" />
             <span id="volume-value-text" class="volume-value-text"></span> %
-            <button id="play-test-sound-button" class="play-test-sound-button">[Test]</button>
+            <button id="play-test-sound-button" class="play-test-sound-button"></button>
         </div>
     </div>
 </body>

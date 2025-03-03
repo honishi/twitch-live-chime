@@ -305,7 +305,7 @@ function ConnectButton() {
 function NoStreamsLabel() {
   return (
     <div className="m-4 flex w-full items-center gap-2 py-10 text-sm">
-      No live streams.
+      {chrome.i18n.getMessage("noLiveStreams")}
       <img src={randomNoStreamImage()} width="24" alt="No live streams" />
     </div>
   );

@@ -35,6 +35,9 @@
   "following": {
     "message": "Following"
   },
+  "noLiveStreams": {
+    "message": "No live streams."
+  },
   "trending": {
     "message": "Trending"
   },

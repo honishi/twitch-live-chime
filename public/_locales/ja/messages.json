@@ -35,6 +35,9 @@
   "following": {
     "message": "フォロー中"
   },
+  "noLiveStreams": {
+    "message": "現在ライブ中の配信はありません。"
+  },
   "trending": {
     "message": "トレンド"
   },

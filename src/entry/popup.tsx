@@ -40,6 +40,8 @@ async function renderMenu() {
     await toggleSuspended();
     await updateSuspendButton();
   };
+  const autoLaunchButtonTooltip = chrome.i18n.getMessage("autoLaunchButtonTooltip");
+  suspendButton.title = autoLaunchButtonTooltip;
   await updateSuspendButton();
 
   // Duplicate tab guard button
@@ -50,6 +52,8 @@ async function renderMenu() {
     await toggleDuplicateTabGuard();
     await updateDuplicateTabGuardButton();
   };
+  const duplicateTabGuardButtonTooltip = chrome.i18n.getMessage("duplicateTabGuardButtonTooltip");
+  duplicateTabGuardButton.title = duplicateTabGuardButtonTooltip;
   await updateDuplicateTabGuardButton();
 
   // Reconnect button
@@ -59,6 +63,8 @@ async function renderMenu() {
   };
   const reconnectText = chrome.i18n.getMessage("reconnect");
   reconnectButton.textContent = reconnectText;
+  const reconnectButtonTooltip = chrome.i18n.getMessage("reconnectButtonTooltip");
+  reconnectButton.title = reconnectButtonTooltip;
 
   // Refresh button
   const refreshButton = document.getElementById("refresh-button") as HTMLButtonElement;
@@ -67,6 +73,8 @@ async function renderMenu() {
   };
   const refreshText = chrome.i18n.getMessage("refresh");
   refreshButton.textContent = refreshText;
+  const refreshButtonTooltip = chrome.i18n.getMessage("refreshButtonTooltip");
+  refreshButton.title = refreshButtonTooltip;
 
   // Option button
   const optionButton = document.getElementById("option-button") as HTMLButtonElement;
@@ -75,6 +83,8 @@ async function renderMenu() {
   };
   const optionText = chrome.i18n.getMessage("options");
   optionButton.textContent = optionText;
+  const optionButtonTooltip = chrome.i18n.getMessage("optionsButtonTooltip");
+  optionButton.title = optionButtonTooltip;
 }
 
 async function renderTabs() {

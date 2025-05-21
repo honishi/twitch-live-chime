@@ -3,6 +3,9 @@ import { inject, injectable } from "tsyringe";
 import { InjectTokens } from "../../di/inject-tokens";
 import { BrowserApi } from "../infra-interface/browser-api";
 import { TwitchApi } from "../infra-interface/twitch-api";
+import { InvalidTokenError } from "../model/error";
+import { NoUserIdError } from "../model/error";
+import { NoTokenError } from "../model/error";
 import { MessageType } from "../model/message";
 import { SoundType } from "../model/sound-type";
 import { Stream } from "../model/stream";
@@ -104,6 +107,13 @@ export class BackgroundImpl implements Background {
       await this.requestStreams();
     } catch (e) {
       console.log(`Failed to request streams: ${e}`);
+      if (
+        e instanceof NoTokenError ||
+        e instanceof NoUserIdError ||
+        e instanceof InvalidTokenError
+      ) {
+        await this.browserApi.setWarningBadge();
+      }
     }
   }
 

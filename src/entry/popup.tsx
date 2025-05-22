@@ -56,6 +56,7 @@ async function renderMenu() {
   duplicateTabGuardButton.title = duplicateTabGuardButtonTooltip;
   await updateDuplicateTabGuardButton();
 
+  /*
   // Reconnect button
   const reconnectButton = document.getElementById("reconnect-button") as HTMLButtonElement;
   reconnectButton.onclick = async () => {
@@ -65,6 +66,7 @@ async function renderMenu() {
   reconnectButton.textContent = reconnectText;
   const reconnectButtonTooltip = chrome.i18n.getMessage("reconnectButtonTooltip");
   reconnectButton.title = reconnectButtonTooltip;
+  */
 
   // Refresh button
   const refreshButton = document.getElementById("refresh-button") as HTMLButtonElement;

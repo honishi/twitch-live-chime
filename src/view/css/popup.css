@@ -34,7 +34,7 @@ body {
 .menu-item a {
   cursor: pointer;
   font-size: 12px;
-  margin-right: 12px;
+  margin-right: 16px;
   display: flex;
   align-items: center;
   color: inherit;

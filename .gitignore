@@ -6,3 +6,6 @@ dist*.zip
 # .env
 .env.development
 .env.production
+
+# Claude Code
+.claude/
